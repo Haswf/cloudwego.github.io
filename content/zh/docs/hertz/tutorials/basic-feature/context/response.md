@@ -221,11 +221,11 @@ h.GET("/user", func(c context.Context, ctx *app.RequestContext) {
 func (ctx *RequestContext) SetCookie(name, value string, maxAge int, path, domain string, sameSite protocol.CookieSameSite, secure, httpOnly bool)
 ```
 
-示例:
+Example Code:
 
 ```go
 h.GET("/user", func(c context.Context, ctx *app.RequestContext) {
-    ctx.SetCookie("user", "hertz", 1, "/", "localhost", protocol.CookieSameSiteLaxMode, true, true, false)
+    ctx.SetCookie("user", "hertz", 1, "/", "localhost", protocol.CookieSameSiteLaxMode, true, true)
     cookie := ctx.Response.Header.Get("Set-Cookie") 
     // cookie == "user=hertz; max-age=1; domain=localhost; path=/; HttpOnly; secure; SameSite=Lax"
 })
